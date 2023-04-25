@@ -3,7 +3,7 @@ import "@/styles/globals.css";
 
 export default function App({ Component, pageProps }) {
   return (
-    <>
+    <div>
       <Head>
         <title>Morgonmysboisen</title>
         <meta name="description" content="Morgonmysboisens officiella webbsida" />
@@ -11,7 +11,7 @@ export default function App({ Component, pageProps }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Component {...pageProps} />
-    </>
+    </div>
   );
 }
 
