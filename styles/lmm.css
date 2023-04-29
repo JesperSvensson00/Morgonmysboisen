@@ -12,7 +12,7 @@
   overflow-y: visible;
 }
 
-.content {
+.lmm .content {
   color: whitesmoke;
   padding: 2rem;
   text-align: center;
@@ -21,20 +21,20 @@
   font-family: "britannic-bold-regular", sans-serif;
 }
 
-.gallery {
+.lmm .gallery {
   margin-top: 10rem;
   width: 20%;
   padding: 0 1rem;
 }
 
-.image-container {
+.lmm .image-container {
   width: 100%;
   min-height: 0;
   aspect-ratio: 1 / 1;
   margin-bottom: 1rem;
 }
 
-.image-container img {
+.lmm .image-container img {
   width: 100%;
   height: 100%;
   object-fit: cover;

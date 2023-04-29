@@ -2,7 +2,9 @@ import Head from "next/head";
 import { Inter } from "next/font/google";
 import localFont from "next/font/local";
 import "@/styles/globals.css";
+import "@/styles/index.css";
 import "@/styles/lmm.css";
+import "@/styles/om-oss.css";
 
 const inter = Inter({ subsets: ["latin"] });
 export default function App({ Component, pageProps }) {

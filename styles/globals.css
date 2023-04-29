@@ -4,3 +4,17 @@ body {
   height: 100%;
   width: 100%;
 }
+
+main {
+  width: 100%;
+  margin: 0;
+  overflow-y: visible;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:visited {
+  color: none;
+}

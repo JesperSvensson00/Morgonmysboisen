@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function Lmm3({ images }) {
   return (
-    <main id="lmm3">
+    <main id="lmm3" className="lmm">
       <div className="content">
         <div className="gallery left">
           {images.map((image_path, idx) => {
