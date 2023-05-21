@@ -66,13 +66,17 @@
 
 .vlog-reveal div.button {
   margin: auto;
-  padding: 1rem 2rem;
+  padding: 30px 20px;
   font-size: 40px;
-  width: fit-content;
+  width: 300px;
   background-color: slateblue;
   border-radius: 10px;
   text-align: center;
   transition: all 0.5s;
+}
+
+.vlog-reveal div.button p {
+  margin: 0;
 }
 
 .bobbing {
@@ -100,13 +104,41 @@
   margin: 0;
   font-family: "VT323", monospace;
   letter-spacing: 10px;
-  font-size: clamp(3rem, 10vw, 10rem);
+  font-size: clamp(1rem, 10vw, 10rem);
   color: #ffd9e2;
   text-shadow: 0 0 0 transparent, 0 0 10px #ff003c, 0 0 20px rgba(255, 0, 60, 0.5), 0 0 40px #ff003c,
     0 0 100px #ff003c, 0 0 200px #ff003c, 0 0 300px #ff003c;
 
   padding: 0rem clamp(1rem, 2vw, 3rem);
   border-radius: clamp(0.4rem, 0.75vw, 1rem);
+}
+
+@media screen and (width < 500px) {
+  .vlog-reveal h1 {
+    font-size: clamp(0.2rem, 6vw, 10rem);
+  }
+  .input-wrapper {
+    width: auto;
+    padding: 0px 10px;
+  }
+
+  .input-wrapper input {
+    width: 85%;
+    font-size: 26px;
+    height: 40px;
+  }
+
+  .vlog-reveal div.button {
+    padding: none;
+    width: 85%;
+    padding: 5px;
+    font-size: 30px;
+  }
+
+  .vlog-reveal div.button.home {
+    width: min-content;
+    padding: 20px;
+  }
 }
 
 /* Pointer */

@@ -15,6 +15,8 @@ export default function App({ Component, pageProps }) {
         <title>Morgonmysboisen</title>
         <meta name="description" content="Morgonmysboisens officiella webbsida" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="mobile-web-app-capable" content="yes"></meta>
+        <meta name="apple-mobile-web-app-capable" content="yes"></meta>
         <link rel="icon" href="/favicon.ico" />
         <style jsx global>{`
           html {

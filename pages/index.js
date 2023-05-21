@@ -10,7 +10,7 @@ export default function Home() {
   const [placeHolder, setPlaceHolder] = useState("");
   const [code, setCode] = useState("");
 
-  const password = "boisen";
+  const password = "BOISEN";
 
   const revealText = () => {
     setShowing(true);
@@ -117,7 +117,7 @@ export default function Home() {
               }}
               value={code}
               onChange={(e) => {
-                setCode(e.target.value);
+                setCode(e.target.value.toUpperCase());
               }}
               className="bobbing code-input"
             />
