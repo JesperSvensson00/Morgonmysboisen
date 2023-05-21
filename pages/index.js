@@ -1,64 +1,156 @@
-import Link from "next/link";
+import { useEffect, useRef, useState } from "react";
+import Router from "next/router";
 
 export default function Home() {
+  const vlog_title = "SKOTTLAND MED MORGONMYSBOISEN";
+  //   const vlog_title = "SKOT";
+  const [revealedText, setRevealedText] = useState("");
+  const [showing, setShowing] = useState(false);
+  const [showingLinks, setShowingLinks] = useState(false);
+  const [placeHolder, setPlaceHolder] = useState("");
+  const [code, setCode] = useState("");
+
+  const password = "boisen";
+
+  const revealText = () => {
+    setShowing(true);
+    const audio = document.querySelector("audio");
+    audio.loop = true;
+    // audio.play();
+    audio.volume = 0.5;
+    const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    let interval = null;
+    let iteration = -1;
+
+    interval = setInterval(() => {
+      setRevealedText(
+        vlog_title
+          .split("")
+          .map((letter, index) => {
+            if (index < iteration || letter === " ") {
+              return vlog_title[index];
+            }
+
+            if (vlog_title[Math.floor(iteration) + 1] === " ") {
+              console.log("hej");
+              iteration++;
+            }
+
+            if (index > iteration + 1) {
+              return "_";
+            }
+
+            let random_letter = letters[Math.floor(Math.random() * 26)];
+            while (random_letter == letter) {
+              random_letter = letters[Math.floor(Math.random() * 26)];
+            }
+            return random_letter;
+          })
+          .join("")
+      );
+
+      if (iteration >= vlog_title.length) {
+        clearInterval(interval);
+        const title = document.getElementById("title");
+        title.className = "flicker-once";
+        console.log("Done");
+
+        audio.pause();
+        setTimeout(() => {
+          setShowingLinks(true);
+        }, 3600);
+      }
+
+      iteration += 1 / 10;
+    }, 100);
+  };
+
+  useEffect(() => {
+    const codePlaceholders = [
+      "B33PB00P-42",
+      "######",
+      "###",
+      "[1][4][2][0][3]",
+      "NESI OBSYM NOG ROM",
+      "MAT 7:7",
+    ];
+    setPlaceHolder(codePlaceholders[Math.floor(Math.random() * codePlaceholders.length)]);
+    document.addEventListener("contextmenu", (event) => event.preventDefault());
+    document.querySelector("video").playbackRate = 3;
+
+    document.querySelector("main.vlog-reveal").onmousemove = (e) => {
+      let x = e.clientX;
+      let y = e.clientY;
+      e.currentTarget.style.setProperty("--mouse-x", `${x}px`);
+      e.currentTarget.style.setProperty("--mouse-y", `${y}px`);
+    };
+  }, []);
+
   return (
-    <main id="start">
-      <div className="content">
-        <div id="header">
-          <h1>Morgonmysboisen</h1>
-          <div className="link-list">
-            <Link href={"/lmm1"}>LMM1</Link>
-            <Link href={"/lmm2"}>LMM2</Link>
-            <Link href={"/lmm3"}>LMM3</Link>
-          </div>
-        </div>
-        <div id="about">
-          <h2>Om Morgonmysboisen</h2>
-          <p>
-            Hej och välkommen till Morgonmysboisen - ett gammalt kompisgäng som har varit
-            tillsammans länge och har en stark vänskap! Vi har en gemensam passion för gaming och vi
-            älskar att spela de bästa spelen tillsammans, som League of Legends och Counter-Strike:
-            Global Offensive.
-          </p>
-          <p>
-            Vi är ett tight team som har en speciell dynamik som bara kommer med åren av att vara
-            tillsammans. Vi trivs med varandra och vi vet vad vi kan förvänta oss av varandra, både
-            på och utanför spelfältet. Vi är stolta över vår gemenskap och vi värdesätter de band vi
-            har byggt upp under åren.
-          </p>
-          <p>
-            Även om vi inte aktivt söker nya medlemmar, så är vi alltid glada över att träffa nya
-            människor som delar vår passion för gaming. Vi tror på att inkludera och välkomna andra,
-            även om vi har en tight grupp. Så om du någonsin vill spela med oss, är du mer än
-            välkommen att hoppa in och vara med på ett spel eller två.
-          </p>
-          <p>
-            Tack för att du ville lära känna Morgonmysboisen lite bättre. Vi ser fram emot att spela
-            fler spel tillsammans!
-          </p>
-        </div>
-        <div id="timeline">
-          <div class="timeline">
-            <div class="container left">
-              <div class="content">
-                <h2>2017</h2>
-                <p>Lorem ipsum..</p>
-              </div>
-            </div>
-            <div class="container right">
-              <div class="content">
-                <h2>2016</h2>
-                <p>Lorem ipsum..</p>
-              </div>
-            </div>
-            <div class="container left">
-              <div class="content">
-                <h2>2016</h2>
-                <p>Lorem ipsum..</p>
-              </div>
+    <main className="vlog-reveal">
+      <span className="pointer"></span>
+      <video src="stars-and-space.mp4" autoPlay muted loop />
+      <audio src="split-flap.wav"></audio>
+      <div>
+        {!showing && (
+          <div className="input-wrapper">
+            <p>
+              En kod, du söker och finna måste, <br /> En värld av hemligheter den kan avslöja åt
+              dig förvisso.
+            </p>
+            <p>
+              Låt inte frustrationen ta överhand, Möjligheten finns där, <br />
+              kämpa på och sök över land och strand.
+            </p>
+            <input
+              type="text"
+              placeholder={placeHolder}
+              onBlur={(e) => {
+                if (code) {
+                  document.querySelector(".button").classList.add("bobbing");
+                  e.target.classList.remove("error");
+                  e.target.classList.remove("bobbing");
+                }
+                if (!code) {
+                  document.querySelector(".button").classList.remove("bobbing");
+                }
+              }}
+              value={code}
+              onChange={(e) => {
+                setCode(e.target.value);
+              }}
+              className="bobbing code-input"
+            />
+            <div
+              className="button"
+              onClick={(e) => {
+                if (code == password) {
+                  revealText();
+                  document.querySelector(".code-input").classList.add("bobbing");
+                } else {
+                  e.target.classList.remove("bobbing");
+                  document.querySelector(".code-input").classList.add("error");
+                }
+              }}>
+              <p>En hemlighet du vill se?</p>
             </div>
           </div>
-        </div>
+        )}
+        {showing && (
+          <>
+            <h1 data-value={vlog_title} id="title">
+              {revealedText}
+            </h1>
+
+            <div
+              className={`button home bobbing ${!showingLinks ? "hidden" : ""}`}
+              onClick={() => {
+                Router.push("/start");
+              }}>
+              Hem
+            </div>
+          </>
+        )}
       </div>
     </main>
   );

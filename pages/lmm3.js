@@ -1,8 +1,21 @@
 import Image from "next/image";
 
 export default function Lmm3({ images }) {
+  useEffect(() => {
+    console.log(document.querySelector(".background").attributes);
+    document.querySelector(".background").muted = true;
+    document.querySelector(".background").autoplay = true;
+  }, []);
+
+  useEffect(() => {
+    // console.log(document.querySelector(".video-holder > iframe").getPlayerState());
+  }, []);
+
   return (
     <main id="lmm3" className="lmm">
+      <video src="background.mp4" loop className="background">
+        {/* <source  type="video/mp4" /> */}
+      </video>
       <div className="content">
         <div className="gallery left">
           {images.map((image_path, idx) => {
@@ -20,14 +33,9 @@ export default function Lmm3({ images }) {
             }
           })}
         </div>
-        <div>
+        <div className="video-holder">
           <h1>Lir med morgonmysboisen III</h1>
-          <iframe
-            width="560"
-            height="315"
-            src="https://www.youtube.com/embed/cP_h48Db69o"
-            title="YouTube video player"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
+          <iframe src="https://www.youtube.com/embed/cP_h48Db69o" />
         </div>
         <div className="gallery right">
           {images.map((image_path, idx) => {
@@ -52,6 +60,7 @@ export default function Lmm3({ images }) {
 
 import { readdirSync } from "fs";
 import { join } from "path";
+import { useEffect } from "react";
 export async function getStaticProps() {
   const PATH = join(process.cwd(), "public/images/lmm3");
   let images = readdirSync(PATH).map((path) => {

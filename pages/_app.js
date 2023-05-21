@@ -5,6 +5,7 @@ import "@/styles/globals.css";
 import "@/styles/index.css";
 import "@/styles/lmm.css";
 import "@/styles/om-oss.css";
+import "@/styles/vlog-reveal.css";
 
 const inter = Inter({ subsets: ["latin"] });
 export default function App({ Component, pageProps }) {
