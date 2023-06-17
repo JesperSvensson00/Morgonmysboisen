@@ -1,8 +1,8 @@
 import Image from "next/image";
 
-export default function Lmm3({ images }) {
+export default function About() {
   return (
-    <main id="lmm3">
+    <main id="om-oss">
       <div className="content"></div>
     </main>
   );

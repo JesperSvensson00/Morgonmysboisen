@@ -12,6 +12,10 @@ export default function Home() {
       text: "Den 8 januari föds organisationens yngsta medlem, Rasmus Al-sudany. Som liten gillade Rasmus att rita och bygga med duplo.",
     },
     {
+      year: 2008,
+      text: "Den 24 november föds Lukas syrra.",
+    },
+    {
       year: 2015,
       text: 'Kendrick Lamar släpper albumet "To Pimp a Butterfly"',
     },
@@ -22,18 +26,22 @@ export default function Home() {
     {
       year: 2018,
       text: "Elias Klaesson blir misstänkt för grov misshandel.",
+      image: "elias_farlig.jpg",
     },
     {
       year: 2018,
       text: "Den 19 oktober hade organisationen ett väldigt lyckat styrelsemöte i syfte att öka mångfalden i organisationen.",
+      image: "studentfest.jpg",
     },
     {
       year: 2019,
       text: "Den 30 mars organiserar Morgonmysboisen en extremt lyckad maskerad ute i Guddarp.",
+      image: "maskerad_guddarp.jpg",
     },
     {
       year: 2019,
       text: "Den 12 januari får Thy nytt kassasystem.",
+      image: "thy_kassa.jpg",
     },
     {
       year: 2019,
@@ -42,15 +50,33 @@ export default function Home() {
     {
       year: 2020,
       text: "Den 20 juli hade Jesper Svensson en grym natt.",
+      image: "jesper_grym_natt.jpg",
+    },
+    {
+      year: 2022,
+      text: "Den 18:e augusti blev Alle och Madde official på FB.",
+      image: "alle_madde_tsm.png",
     },
   ];
 
-  const TimeStamp = ({ year, text, side }) => {
+  const TimeStamp = ({ stamp, side }) => {
+    const { year, text, image } = stamp;
     return (
-      <div className={`container ${side || "left"}`}>
+      <div className={`timestamp container ${side || "left"}`}>
         <div className="content">
           <h2>{year}</h2>
           <p>{text}</p>
+
+          {image && (
+            <div className="image-holder">
+              <Image
+                src={`/images/timeline/${image}`}
+                alt="Bild tillhörande timestamp"
+                style={{ objectFit: "contain" }}
+                fill
+              />
+            </div>
+          )}
         </div>
       </div>
     );
@@ -100,14 +126,7 @@ export default function Home() {
         <div id="timeline">
           <div className="timeline">
             {timeline_content.map((content, idx) => {
-              return (
-                <TimeStamp
-                  year={content.year}
-                  text={content.text}
-                  key={idx}
-                  side={idx % 2 == 0 ? "left" : "right"}
-                />
-              );
+              return <TimeStamp stamp={content} key={idx} side={idx % 2 == 0 ? "left" : "right"} />;
             })}
           </div>
         </div>

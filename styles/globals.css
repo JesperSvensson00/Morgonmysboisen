@@ -3,6 +3,7 @@ body {
   padding: 0;
   height: 100%;
   width: 100%;
+  overflow: auto;
 }
 
 main {
@@ -17,4 +18,14 @@ a {
 
 a:visited {
   color: none;
+}
+
+footer {
+  position: relative;
+  box-sizing: content-box;
+  height: 20vh;
+  background-color: #19242e;
+  color: white;
+  text-align: center;
+  padding: 2vh 0;
 }
