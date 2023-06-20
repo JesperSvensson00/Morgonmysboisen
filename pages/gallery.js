@@ -8,35 +8,36 @@ import lmm3_1_thumb from "@/public/images/gallery/lmm3/Thumbnail-1.webp";
 import lmm3_2_thumb from "@/public/images/gallery/lmm3/Thumbnail-2.webp";
 import cph_thumb from "@/public/images/gallery/övrigt/copenhagen-thumbnail.webp";
 
-export default function Gallery() {
+export default function Gallery({ images }) {
+  console.log(images);
   const lmm3_images = [
-    "01_Terrorists_and_Police_Vibing",
-    "02_Laughing_Out_Loud",
-    "03_Smoking_Kills",
-    "04_Scooby_Doo",
-    "05_Space_Pirates_With_Hockey_Masks",
-    "06_Scary_Swedish_People",
-    "07_Convict_Tastes_Ananas_Drink",
-    "08_Vendetta_vs_Athetic",
-    "09_Small_Serbian_Man",
-    "10_Creeper_Oh_Man",
-    "11_Bunny_Girl_With_Big_Sword",
-    "12_Confused_Guy_in_a_Hallway",
-    "13_Horror_Movie_Type_Beat_Oil_on_Canvas",
-    "14_What_och_Tva_Fragetecken",
-    "15_Smoking_Site_Every_Match",
-    "16_Spooky_Scary_Skeleton",
-    "17_Lionel_Messi_in_a_Fiat_500",
-    "18_All_the_Cringe_Guys_in_One_Space",
-    "19_Angry_Valle_at_Work",
-    "20_Funky_Vampires_in_a_Moshpit",
-    "21_Hmm",
-    "22_Crackheads_in_Stockholm",
-    "23_The_Boys_and_Guns",
-    "24_Soldier_Dancing_to_Russian_Disco",
-    "25_Sp4zie_-_Epic_Moments",
-    "26_Manly_Eastern_European_Birthday_Boy",
-    "27_Some_Blocky_Gay_Guys",
+    "Terrorists and Police Vibing",
+    "Laughing Out Loud",
+    "Smoking Kills",
+    "Scooby Doo",
+    "Space Pirates With Hockey Masks",
+    "Scary Swedish People",
+    "Convict Tastes Ananas Drink",
+    "Vendetta vs Athetic",
+    "Small Serbian Man",
+    "Creeper... oh man",
+    "Bunny Girl With Big Sword",
+    "Confused Guy in a Hallway",
+    "Horror Movie Type Beat",
+    "What??",
+    "Smoking Site Every Match",
+    "Spooky Scary Skeleton",
+    "Lionel Messi in a Fiat 500",
+    "All the Cringe Guys in One Space",
+    "Angry Valle at Work",
+    "Funky Vampires in a Moshpit",
+    "Hmm",
+    "Crackheads in Stockholm",
+    "The Boys and Guns",
+    "Soldier Dancing to Russian Disco",
+    "Sp4zie - Epic Moments",
+    "Manly Eastern European Birthday Boy",
+    "Some Blocky Gay Guys",
   ];
   return (
     <>
@@ -111,19 +112,19 @@ export default function Gallery() {
                 instruktioner robotarna fick. För att se instruktionen håll över bilden.
               </p>
               <div className="image-album">
-                {lmm3_images.map((image, idx) => (
+                {images.map((image, idx) => (
                   <div className="flip-card" key={idx}>
                     <div className="flip-card-inner">
                       <div className="flip-card-front">
                         <Image
-                          src={"/images/gallery/lmm3/" + image + ".webp"}
+                          src={"/images/gallery/lmm3/chapter_images/" + image}
                           alt={"Kapitelbild " + idx}
                           width={200}
                           height={200}
                         />
                       </div>
                       <div className="flip-card-back">
-                        <p>{image.substring(1).split("_").join(" ")}</p>
+                        <p>{lmm3_images[idx]}</p>
                       </div>
                     </div>
                   </div>
@@ -154,4 +155,20 @@ export default function Gallery() {
       <Footer />
     </>
   );
+}
+
+import { readdirSync } from "fs";
+import { join } from "path";
+export async function getStaticProps() {
+  const PATH = join(process.cwd(), "public/images/gallery/lmm3/chapter_images");
+  let images = readdirSync(PATH).map((path) => {
+    return path;
+  });
+  console.log(images);
+  images = images.sort();
+  return {
+    props: {
+      images,
+    },
+  };
 }
