@@ -125,6 +125,7 @@ main#start {
   width: 100%;
   height: 300px;
   overflow: hidden;
+  position: relative;
 }
 
 #timeline .timestamp .image-holder img {
