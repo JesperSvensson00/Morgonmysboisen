@@ -135,7 +135,11 @@ export default function Gallery() {
             <h2>Övrigt</h2>
             <div className="image-holder">
               <h3>Köpenhamn med Kvällsmysboisen!!! feat. Måns</h3>
-              <Image src={cph_thumb} alt="Ett barn som är omringad av 2 björnar" />
+              <Image
+                src={cph_thumb}
+                alt="Ett barn som är omringad av 2 björnar"
+                className="thumb"
+              />
             </div>
             <p className="image-text">
               En del av gänget från Morgonmysboisen begav sig på en minnesvärd festresa till
