@@ -7,6 +7,7 @@ import "@/styles/lmm.css";
 import "@/styles/om-oss.css";
 import "@/styles/vlog-reveal.css";
 import "@/styles/medlemmar.css";
+import "@/styles/gallery.css";
 
 const inter = Inter({ subsets: ["latin"] });
 export default function App({ Component, pageProps }) {
@@ -26,11 +27,6 @@ export default function App({ Component, pageProps }) {
         `}</style>
       </Head>
       <Component {...pageProps} />
-      <footer>
-        <div>
-          <p>Skapad av Mr Potato</p>
-        </div>
-      </footer>
     </>
   );
 }

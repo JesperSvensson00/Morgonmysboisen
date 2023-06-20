@@ -96,7 +96,7 @@ export default function Home() {
             <Link href={"/lmm2"}>LMM2</Link>
             <Link href={"/lmm3"}>LMM3</Link>
             <Link href={"/"}>Kokosboll</Link>
-            <Link href={"/"}>Art gallery</Link>
+            <Link href={"/gallery"}>Art gallery</Link>
             <Link href={"/"}>Behind the scenes</Link>
           </div>
           <div id="about">
