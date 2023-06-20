@@ -1,10 +1,8 @@
 .vlog-reveal {
-  /* background-color: black; */
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva,
     Verdana, sans-serif;
   position: relative;
   background-color: black;
-  width: 100vw;
   height: 100vh;
   overflow: hidden;
   -webkit-user-select: none; /* Safari */
@@ -55,6 +53,7 @@
 
 .input-wrapper input:hover {
   cursor: none;
+  border: rgb(87, 32, 133) solid 2px;
 }
 
 .input-wrapper input:focus {
@@ -69,7 +68,7 @@
   padding: 30px 20px;
   font-size: 40px;
   width: 300px;
-  background-color: slateblue;
+  background-color: rgb(87, 32, 133);
   border-radius: 10px;
   text-align: center;
   transition: all 0.5s;
@@ -84,7 +83,7 @@
 }
 
 .vlog-reveal div.button.bobbing:hover {
-  box-shadow: rgba(50, 41, 109, 0.678) 0 0 10px 8px;
+  box-shadow: rgba(96, 50, 134, 0.678) 0 0 10px 8px;
   transform: scale(1.05) translateY(0px) !important;
 }
 
