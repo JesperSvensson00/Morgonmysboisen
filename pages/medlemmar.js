@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Footer from "@/components/Footer";
 
 export default function Members({ images }) {
   const members = [
@@ -14,6 +15,19 @@ export default function Members({ images }) {
       game: "Minecraft",
       color: "Cyan",
     },
+
+    {
+      surname: "Kriss",
+      familyname: "Kania",
+      nicks: ["Polacken", "Krzysztof"],
+      desc: "Kriss är grabbgängets äldre bror. Han är ansvarsfull och pålitlig och tar hand om de andra i gänget som en storebror. Med sin lugna och trygga personlighet är han gängets egna fadersfigur.",
+      age: 23,
+      locale: "Lund",
+      occupation: "Tandläkarstudent på LU",
+      song: "Kom och ta mig - Brandsta City Släckers",
+      game: "C4 Arena",
+      color: "Röd",
+    },
     {
       surname: "Rasmus",
       familyname: "Al-Sudany",
@@ -21,21 +35,9 @@ export default function Members({ images }) {
       desc: "Rasmus är grabbgängets snille. Han är en tekniskt kunnig person som alltid hittar smarta lösningar på tekniska problem. Med sina glasögon och sin ständiga nyfikenhet är han gängets egna tekniknörd.",
       age: 22,
       locale: "Aberdeen",
-      occupation: "Student på University of Aberdeen",
+      occupation: "Student i Aberdeen",
       song: "Rocksteady - Fdel",
       game: "WoW",
-      color: "Röd",
-    },
-    {
-      surname: "Kriss",
-      familyname: "Kania",
-      nicks: ["Polacken", "Krzysztof"],
-      desc: "Kriss är grabbgängets äldre bror. Han är ansvarsfull och pålitlig och tar hand om de andra i gänget som en storebror. Med sitt lugna sinne och sin stora empati är han den som alla vänder sig till när de behöver råd eller stöd.",
-      age: 23,
-      locale: "Lund",
-      occupation: "Student på LU",
-      song: "Kom och ta mig - Brandsta City Släckers",
-      game: "Cyberpunk",
       color: "Orange",
     },
     {
@@ -54,7 +56,7 @@ export default function Members({ images }) {
       surname: "Lukas",
       familyname: "Alhbin",
       nicks: ["Lucke", "Lucky Luke", "Albin"],
-      desc: "Lukas är grabbgängets äventyrare. Han älskar att utforska och prova nya saker. Med sitt modiga sinne och sin atletiska kropp tar han sig an alla utmaningar som kommer i gängets väg.",
+      desc: "Lukas är grabbgängets äventyrare. Han älskar att utforska och prova nya saker. Med sin positiva inställning och sitt ständiga leende är han alltid redo för nya äventyr.",
       age: 23,
       locale: "Halmstad",
       occupation: "Snart Officer",
@@ -71,7 +73,7 @@ export default function Members({ images }) {
       locale: "Ljungby",
       occupation: "Rusta",
       song: "Hon dansar vidare i livet - Hov1",
-      game: "BF4",
+      game: "BF3",
       color: "Blå",
     },
     {
@@ -89,7 +91,11 @@ export default function Members({ images }) {
     {
       surname: "Benjamin",
       familyname: "Boros",
-      nicks: ["Benne"],
+      nicks: [
+        "Benne",
+        "xXxSyrsan_BenneGittBitchBallerBoiiBallerBigspenderBackstabPtBananaButtOrgieGuyXxX",
+        "Banjo",
+      ],
       desc: "Benjamin är grabbgängets musiknörd. Han har ett otroligt öra för musik och kan spela flera instrument. Med sitt rockiga utseende och sin passion för musik är han själen i gänget.",
       age: 22,
       locale: "Oxie",
@@ -116,6 +122,7 @@ export default function Members({ images }) {
     return (
       <div className="member-card">
         <div className="image-holder">
+          <i className="fa-solid fa-angle-up" />
           <Image
             src={`/images/members/${member.surname}.webp`}
             alt={`Rolig och konstig bild på ${member.surname}`}
@@ -124,16 +131,18 @@ export default function Members({ images }) {
           />
         </div>
         <div className="info">
-          <h2 className="name">
-            {member.surname} &quot;{member.nicks.join(", ")}&quot; {member.familyname}
-          </h2>
+          <div className="name-container">
+            <h2 className="name">
+              {member.surname} {member.familyname} <span>aka {member.nicks.join(", ")}</span>
+            </h2>
+          </div>
           <div className="details">
             <div className="facts">
               <span>Ålder: {member.age}</span>
               <span>Plats: {member.locale}</span>
               <span>Yrke: {member.occupation}</span>
-              <span>Favvospel: {member.game}</span>
               <span>Favvolåt: {member.song}</span>
+              <span>Favvospel: {member.game}</span>
               <span>Favvofärg: {member.color}</span>
             </div>
             <div className="description">{member.desc}</div>
@@ -144,17 +153,20 @@ export default function Members({ images }) {
   };
 
   return (
-    <main id="medlemmar">
-      <div className="content">
-        <div className="header">
-          <h1>Medlemmar</h1>
+    <>
+      <main id="medlemmar">
+        <div className="content">
+          <div className="header">
+            <h1>Medlemmar</h1>
+          </div>
+          <div className="member-shelf">
+            {members.map((member, idx) => {
+              return <MemberCard member={member} key={idx} />;
+            })}
+          </div>
         </div>
-        <div className="member-shelf">
-          {members.map((member, idx) => {
-            return <MemberCard member={member} key={idx} />;
-          })}
-        </div>
-      </div>
-    </main>
+      </main>
+      <Footer />
+    </>
   );
 }
