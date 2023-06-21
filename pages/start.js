@@ -97,7 +97,7 @@ export default function Home() {
             <Link href={"/lmm3"}>LMM3</Link>
             <Link href={"/movies"}>Övriga filmer</Link>
             <Link href={"/gallery"}>Art gallery</Link>
-            {/* <Link href={"/"}>Behind the scenes</Link> */}
+            <Link href={"/medlemmar"}>Medlemmar</Link>
           </div>
           <div id="about">
             <h2>Om Morgonmysboisen</h2>

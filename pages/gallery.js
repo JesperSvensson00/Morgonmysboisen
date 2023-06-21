@@ -109,7 +109,8 @@ export default function Gallery({ images }) {
                 Under arbetet av den tredje upplagan i serien &quot;Lir med Morgonmysboisen&quot;
                 ökades produktionsvärdet enormt. Bland annat används robotar för att skapa en bilder
                 som representerar varje kapitel. Nedan vissas dessa bilder upp och vilka
-                instruktioner robotarna fick. För att se instruktionen håll över bilden.
+                instruktioner robotarna fick. För att se instruktionen klicka på eller håll över
+                bilden.
               </p>
               <div className="image-album">
                 {images.map((image, idx) => (
