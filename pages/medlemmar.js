@@ -19,7 +19,7 @@ export default function Members() {
     {
       surname: "Kriss",
       familyname: "Kania",
-      nicks: ["Polacken", "Krzysztof"],
+      nicks: ["Polacken", "Krzysztof", "Kchyshesh"],
       desc: "Kriss är grabbgängets äldre bror. Han är ansvarsfull och pålitlig och tar hand om de andra i gänget som en storebror. Med sin lugna och trygga personlighet är han gängets egna fadersfigur.",
       age: 23,
       locale: "Lund",
@@ -55,7 +55,7 @@ export default function Members() {
     {
       surname: "Lukas",
       familyname: "Alhbin",
-      nicks: ["Lucke", "Lucky Luke", "Albin"],
+      nicks: ["Lucke", "Lucky Luke", "Albin", "Golden Arrow"],
       desc: "Lukas är grabbgängets äventyrare. Han älskar att utforska och prova nya saker. Med sin positiva inställning och sitt ständiga leende är han alltid redo för nya äventyr.",
       age: 23,
       locale: "Halmstad",
@@ -67,7 +67,7 @@ export default function Members() {
     {
       surname: "Alexander",
       familyname: "Göransson",
-      nicks: ["Alle", "Ekorren"],
+      nicks: ["Alle", "Ekorren", "Alle-Skate"],
       desc: "Alexander är grabbgängets artist. Han är en kreativ person som älskar att rita och måla. Med sin konstnärliga talang och sin unika stil skapar han fantastiska konstverk som imponerar alla i gänget.",
       age: 23,
       locale: "Ljungby",
