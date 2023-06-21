@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Footer from "@/components/Footer";
 
-export default function Members({ images }) {
+export default function Members() {
   const members = [
     {
       surname: "Jesper",
@@ -120,7 +120,7 @@ export default function Members({ images }) {
 
   const MemberCard = ({ member }) => {
     return (
-      <div className="member-card">
+      <div className={"member-card"}>
         <div className="image-holder">
           <i className="fa-solid fa-angle-up" />
           <Image
@@ -130,10 +130,13 @@ export default function Members({ images }) {
             height={300}
           />
         </div>
-        <div className="info">
-          <div className="name-container">
+        <div className={`info`}>
+          <div className={"name-container " + member.surname}>
             <h2 className="name">
-              {member.surname} {member.familyname} <span>aka {member.nicks.join(", ")}</span>
+              <span>
+                {member.surname} {member.familyname}{" "}
+              </span>
+              <span className="nicks">aka {member.nicks.join(", ")}</span>
             </h2>
           </div>
           <div className="details">
