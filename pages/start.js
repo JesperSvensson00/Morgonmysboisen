@@ -88,13 +88,17 @@ export default function Home() {
       <main id="start">
         <div className="content">
           <div id="header">
-            <h1>Morgonmysboisen</h1>
+            <h1>
+              <span>Morgonmys</span>
+              <span>boisen</span>
+            </h1>
             <Image src={"/images/grupp_bild.png"} width={2592} height={1434} alt="Bakgrund" />
           </div>
           <div className="link-list">
             <Link href={"/lmm1"}>LMM1</Link>
             <Link href={"/lmm2"}>LMM2</Link>
             <Link href={"/lmm3"}>LMM3</Link>
+            <Link href={"/smm"}>SMM</Link>
             <Link href={"/movies"}>Övriga filmer</Link>
             <Link href={"/gallery"}>Art gallery</Link>
             <Link href={"/medlemmar"}>Medlemmar</Link>
