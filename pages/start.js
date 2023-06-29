@@ -58,6 +58,11 @@ export default function Home() {
       text: "Den 18:e augusti blev Alle och Madde official på FB.",
       image: "alle_madde_tsm.png",
     },
+    {
+      year: 2023,
+      text: "Lukas tar en taktisk nap klockan 02:00 på midsommar.",
+      image: "lukas_sover.jpg",
+    },
   ];
 
   const TimeStamp = ({ stamp, side }) => {
