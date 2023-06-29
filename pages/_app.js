@@ -1,6 +1,5 @@
 import Head from "next/head";
 import { Inter } from "next/font/google";
-import localFont from "next/font/local";
 import "@/styles/globals.css";
 import "@/styles/index.css";
 import "@/styles/lmm.css";
