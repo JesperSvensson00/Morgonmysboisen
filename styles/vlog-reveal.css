@@ -12,7 +12,7 @@
   cursor: none;
 }
 
-.vlog-reveal video {
+.vlog-reveal video.background {
   position: absolute;
   z-index: 2;
   overflow: hidden;
@@ -24,7 +24,6 @@
 .vlog-reveal > div {
   position: relative;
   margin: auto;
-  margin-top: 10%;
   z-index: 10000;
 }
 
@@ -100,21 +99,69 @@
 
 .vlog-reveal h1 {
   text-align: center;
-  margin: 0;
+  margin: 0 auto;
+  margin-top: 5%;
+  width: min-content;
   font-family: "VT323", monospace;
   letter-spacing: 10px;
-  font-size: clamp(1rem, 10vw, 10rem);
+  font-size: clamp(1rem, 7vw, 10rem);
   color: #ffd9e2;
   text-shadow: 0 0 0 transparent, 0 0 10px #ff003c, 0 0 20px rgba(255, 0, 60, 0.5), 0 0 40px #ff003c,
-    0 0 100px #ff003c, 0 0 200px #ff003c, 0 0 300px #ff003c;
+    0 0 100px #ff003c, -3px 2px 0px #ff003c;
 
   padding: 0rem clamp(1rem, 2vw, 3rem);
   border-radius: clamp(0.4rem, 0.75vw, 1rem);
+
+  transition: all 2s ease-in-out;
+}
+
+.vlog-reveal h1:hover {
+  text-shadow: 0 0 0 transparent, 0 0 15px #ff003c, 0 0 20px rgba(255, 0, 60, 0.5), 0 0 40px #ff003c,
+    0 0 100px #ff003c, -3px 2px 0px #ff003c;
+}
+
+.vlog-reveal .video-holder {
+  width: 80%;
+  max-height: 80vh;
+  text-align: center;
+  margin: auto;
+  transition: all 2s ease-in-out;
+}
+
+.vlog-reveal .video-holder.hidden {
+  width: 70%;
+  transition: all 2s ease-in-out;
+}
+
+.vlog-reveal .video-holder video {
+  border: none;
+  height: fit-content;
+  max-width: 100%;
+  aspect-ratio: 16 / 9;
+  box-shadow: 0px 0px 52px 11px rgba(0, 0, 0, 1);
+  border-radius: 0.5rem;
+}
+
+.vlog-reveal .video-holder.hidden video {
+  width: 0%;
+}
+
+.vlog-reveal h1.hidden {
+  text-align: center;
+  opacity: 1 !important;
+  font-size: 40px;
+  margin: 1rem auto;
+  width: min-content;
+  text-shadow: 0 0 0 transparent, 0 0 10px #ff003c, 0 0 15px rgba(255, 0, 60, 0.5), 0 0 30px #ff003c,
+    0 0 80px #ff003c, -2px 1px 0px #ff003c !important;
 }
 
 @media screen and (width < 500px) {
   .vlog-reveal h1 {
-    font-size: clamp(0.2rem, 6vw, 10rem);
+    letter-spacing: 0.4rem;
+    font-size: clamp(0.2rem, 6vw, 10rem) !important;
+    text-shadow: 0 0 0 transparent, 0 0 10px #ff003c, 0 0 15px rgba(255, 0, 60, 0.5),
+      0 0 30px #ff003c, 0 0 80px #ff003c, -2px 1px 0px #ff003c;
   }
   .input-wrapper {
     width: auto;
@@ -137,6 +184,20 @@
   .vlog-reveal div.button.home {
     width: min-content;
     padding: 20px;
+    margin-top: 10%;
+  }
+
+  .vlog-reveal h1.hidden {
+    font-size: unset;
+  }
+
+  .vlog-reveal .video-holder {
+    width: 90%;
+  }
+
+  .vlog-reveal .video-holder video {
+    border-radius: 0.2rem;
+    box-shadow: 0px 0px 32px 5px rgba(0, 0, 0, 1);
   }
 }
 
@@ -144,7 +205,7 @@
 @property --c {
   syntax: "<color>";
   inherits: false;
-  initial-value: rgba(99, 100, 122, 0.4);
+  initial-value: rgba(83, 85, 121, 0.7);
 }
 
 .vlog-reveal .pointer {
@@ -154,6 +215,13 @@
   top: calc(var(--mouse-y) - 100px);
   position: absolute;
   background: radial-gradient(60px circle at 100px 100px, var(--c), rgba(0, 0, 0, 0));
+
+  background: radial-gradient(
+    70px circle at 100px 100px,
+    rgba(255, 255, 255, 1) 0%,
+    var(--c) 6%,
+    rgba(255, 255, 255, 0) 40%
+  );
 
   z-index: 1000000;
   opacity: 0;
@@ -169,11 +237,11 @@
   to,
   from {
     transform: scale(0.8);
-    --c: rgba(99, 100, 122, 0.4);
+    --c: rgba(56, 44, 70, 0.801);
   }
   50% {
     transform: scale(1);
-    --c: rgba(67, 67, 70, 0.1);
+    --c: rgba(83, 67, 121, 0.664);
   }
 }
 

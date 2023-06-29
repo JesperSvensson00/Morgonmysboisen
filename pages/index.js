@@ -9,14 +9,19 @@ export default function Home() {
   const [showingLinks, setShowingLinks] = useState(false);
   const [placeHolder, setPlaceHolder] = useState("");
   const [code, setCode] = useState("");
+  const videoRef = useRef(null);
+  const [videoPlaying, setVideoPlaying] = useState(false);
 
   const password = "BOISEN";
+
+  const flicker_delay = 3600;
+  const zoom_delay = 2000;
+  const flap_speed = 50;
 
   const revealText = () => {
     setShowing(true);
     const audio = document.querySelector("audio");
     audio.loop = true;
-    // audio.play();
     audio.volume = 0.5;
     const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     let interval = null;
@@ -32,17 +37,16 @@ export default function Home() {
             }
 
             if (vlog_title[Math.floor(iteration) + 1] === " ") {
-              console.log("hej");
               iteration++;
             }
 
-            if (index > iteration + 1) {
-              return "_";
-            }
+            // if (index > iteration + 1) {
+            //   return "_";
+            // }
 
-            let random_letter = letters[Math.floor(Math.random() * 26)];
+            let random_letter = letters[Math.floor(Math.random() * letters.length)];
             while (random_letter == letter) {
-              random_letter = letters[Math.floor(Math.random() * 26)];
+              random_letter = letters[Math.floor(Math.random() * letters.length)];
             }
             return random_letter;
           })
@@ -56,13 +60,21 @@ export default function Home() {
         console.log("Done");
 
         audio.pause();
-        setTimeout(() => {
+        setTimeout(async () => {
           setShowingLinks(true);
-        }, 3600);
+          setVideoPlaying(true);
+          try {
+            const res = await videoRef.current.play();
+            console.log(res);
+          } catch (e) {
+            console.log(e);
+            document.querySelector("video.trailer").controls = true;
+          }
+        }, flicker_delay);
       }
 
-      iteration += 1 / 10;
-    }, 100);
+      iteration += 1 / 6;
+    }, flap_speed);
   };
 
   useEffect(() => {
@@ -75,8 +87,8 @@ export default function Home() {
       "MAT 7:7",
     ];
     setPlaceHolder(codePlaceholders[Math.floor(Math.random() * codePlaceholders.length)]);
-    document.addEventListener("contextmenu", (event) => event.preventDefault());
-    document.querySelector("video").playbackRate = 3;
+    // document.addEventListener("contextmenu", (event) => event.preventDefault());
+    document.querySelector("video.background").playbackRate = 3;
 
     document.querySelector("main.vlog-reveal").onmousemove = (e) => {
       let x = e.clientX;
@@ -89,19 +101,27 @@ export default function Home() {
   return (
     <main className="vlog-reveal">
       <span className="pointer"></span>
-      <video src="stars-and-space.mp4" autoPlay muted loop />
+      <video className="background" src="stars-and-space.mp4" autoPlay muted loop />
       <audio src="split-flap.wav"></audio>
       <div>
         {!showing && (
           <div className="input-wrapper">
             <p>
-              En kod, du söker och finna måste, <br /> En värld av hemligheter den kan avslöja åt
-              dig förvisso.
+              Är det dags att mysa? <br />
+              Kom närmare istället för att frysa
             </p>
             <p>
-              Låt inte frustrationen ta överhand, Möjligheten finns där, <br />
-              kämpa på och sök över land och strand.
+              Men vi kräver en kod <br />
+              Så lyssna noga, följ mina råd
             </p>
+            <p>
+              Ni måste samarbeta <br />
+              För att lösenordet kunna veta
+            </p>
+            <p>
+              Det låter som en gåta <br />a nån vid en sjö eller å, va?
+            </p>
+
             <input
               type="text"
               placeholder={placeHolder}
@@ -138,16 +158,29 @@ export default function Home() {
         )}
         {showing && (
           <>
-            <h1 data-value={vlog_title} id="title">
+            <h1 data-value={vlog_title} id="title" className={`${videoPlaying ? "hidden" : ""}`}>
               {revealedText}
             </h1>
-
+            <div className={`video-holder ${!videoPlaying ? "hidden" : ""}`}>
+              <video
+                className="trailer"
+                src="videos/smm_trailer.mp4"
+                ref={videoRef}
+                onEnded={() => {
+                  if (document.fullscreenElement) {
+                    document.exitFullscreen();
+                  }
+                  setVideoPlaying(false);
+                }}
+              />
+            </div>
             <div
-              className={`button home bobbing ${!showingLinks ? "hidden" : ""}`}
+              className={`button home bobbing ${!showingLinks || videoPlaying ? "hidden" : ""}`}
               onClick={() => {
+                if (!showingLinks || videoPlaying) return;
                 Router.push("/start");
               }}>
-              Hem
+              Till startsidan
             </div>
           </>
         )}
