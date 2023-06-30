@@ -12,7 +12,7 @@ export default function Home() {
   const videoRef = useRef(null);
   const [videoPlaying, setVideoPlaying] = useState(false);
 
-  const password = "BOISEN";
+  const password = "BOISENKANFLYGA";
 
   const flicker_delay = 3600;
   const zoom_delay = 2000;
@@ -87,7 +87,7 @@ export default function Home() {
       "MAT 7:7",
     ];
     setPlaceHolder(codePlaceholders[Math.floor(Math.random() * codePlaceholders.length)]);
-    // document.addEventListener("contextmenu", (event) => event.preventDefault());
+    document.addEventListener("contextmenu", (event) => event.preventDefault());
     document.querySelector("video.background").playbackRate = 3;
 
     document.querySelector("main.vlog-reveal").onmousemove = (e) => {
