@@ -9,7 +9,6 @@ import lmm3_2_thumb from "@/public/images/gallery/lmm3/Thumbnail-2.webp";
 import cph_thumb from "@/public/images/gallery/övrigt/copenhagen-thumbnail.webp";
 
 export default function Gallery({ images }) {
-  console.log(images);
   const lmm3_images = [
     "Terrorists and Police Vibing",
     "Laughing Out Loud",
@@ -44,7 +43,7 @@ export default function Gallery({ images }) {
       <main id="gallery">
         <div className="content">
           <div id="header">
-            <h1>Artgallery</h1>
+            <h1>Art Gallery</h1>
           </div>
           <section id="lmm1-art">
             <h2>LMM1</h2>
@@ -165,7 +164,6 @@ export async function getStaticProps() {
   let images = readdirSync(PATH).map((path) => {
     return path;
   });
-  console.log(images);
   images = images.sort();
   return {
     props: {
