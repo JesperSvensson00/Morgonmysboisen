@@ -1,4 +1,7 @@
 import Head from "next/head";
+import Link from "next/link";
+import { useState } from "react";
+import { useRouter } from "next/router";
 import { Inter } from "next/font/google";
 import "@/styles/globals.css";
 import "@/styles/index.css";
@@ -11,6 +14,11 @@ import "@/styles/movies.css";
 
 const inter = Inter({ subsets: ["latin"] });
 export default function App({ Component, pageProps }) {
+  const showNav = !["Home"].includes(Component.name);
+  const router = useRouter();
+
+  const [menuOpen, setMenuOpen] = useState(false);
+
   return (
     <>
       <Head>
@@ -27,6 +35,45 @@ export default function App({ Component, pageProps }) {
           }
         `}</style>
       </Head>
+      <>
+        {showNav && (
+          <nav>
+            <Link href={"/start"} className={router.asPath == "/" ? "active" : ""} id="start">
+              Start
+            </Link>
+            <div className={`nav-links ${menuOpen ? "open" : "closed"}`}>
+              <Link href={"/lmm1"} className={router.asPath == "/lmm1" ? "active" : ""}>
+                LMM1
+              </Link>
+              <Link href={"/lmm2"} className={router.asPath == "/lmm2" ? "active" : ""}>
+                LMM2
+              </Link>
+              <Link href={"/lmm3"} className={router.asPath == "/lmm3" ? "active" : ""}>
+                LMM3
+              </Link>
+              <Link href={"/smm"} className={router.asPath == "/smm" ? "active" : ""}>
+                SMM
+              </Link>
+              <Link href={"/movies"} className={router.asPath == "/movies" ? "active" : ""}>
+                Övriga filmer
+              </Link>
+              <Link href={"/gallery"} className={router.asPath == "/gallery" ? "active" : ""}>
+                Art gallery
+              </Link>
+              <Link href={"/medlemmar"} className={router.asPath == "/medlemmar" ? "active" : ""}>
+                Medlemmar
+              </Link>
+            </div>
+            <button
+              className={`mobile-nav ${menuOpen ? "open" : "closed"}`}
+              onClick={() => {
+                setMenuOpen(!menuOpen);
+              }}>
+              <i className="fa fa-bars" />
+            </button>
+          </nav>
+        )}
+      </>
       <Component {...pageProps} />
     </>
   );

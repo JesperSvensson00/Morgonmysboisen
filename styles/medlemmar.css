@@ -19,6 +19,10 @@ main#medlemmar {
   font-size: 40px;
 }
 
+#medlemmar .header h1 {
+  margin-top: 0;
+}
+
 #medlemmar .member-shelf {
   display: flex;
   flex-direction: row;

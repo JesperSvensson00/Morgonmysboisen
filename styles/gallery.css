@@ -9,7 +9,9 @@ main#gallery {
   width: 80vw;
   padding: 1rem;
 }
-
+#gallery h1 {
+  font-size: 40px;
+}
 #gallery .thumb {
   transition: all ease 0.3s;
   height: 400px;

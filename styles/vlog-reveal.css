@@ -10,6 +10,8 @@
   user-select: none; /* Standard syntax */
 
   cursor: none;
+
+  margin: 0;
 }
 
 .vlog-reveal video.background {
