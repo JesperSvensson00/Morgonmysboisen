@@ -97,7 +97,13 @@ export default function Home() {
               <span>Morgonmys</span>
               <span>boisen</span>
             </h1>
-            <Image src={"/images/grupp_bild.png"} width={2592} height={1434} alt="Bakgrund" />
+            <Image
+              src={"/images/grupp_bild.png"}
+              width={2592}
+              height={1434}
+              alt="Bakgrund"
+              priority
+            />
           </div>
           <div className="link-list">
             <Link href={"/lmm1"}>LMM1</Link>
