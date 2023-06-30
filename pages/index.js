@@ -16,7 +16,7 @@ export default function Home() {
 
   const flicker_delay = 3600;
   const zoom_delay = 2000;
-  const flap_speed = 50;
+  const flap_speed = 30;
 
   const revealText = () => {
     setShowing(true);
@@ -73,7 +73,7 @@ export default function Home() {
         }, flicker_delay);
       }
 
-      iteration += 1 / 6;
+      iteration += 1 / 4;
     }, flap_speed);
   };
 
