@@ -14,10 +14,9 @@ import "@/styles/movies.css";
 
 const inter = Inter({ subsets: ["latin"] });
 export default function App({ Component, pageProps }) {
-  const showNav = !["Home"].includes(Component.name);
-  console.log(Component.name);
   const router = useRouter();
 
+  const showNav = !["/start", "/"].includes(router.asPath);
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
