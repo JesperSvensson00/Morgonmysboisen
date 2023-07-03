@@ -107,20 +107,10 @@ export default function Home() {
         {!showing && (
           <div className="input-wrapper">
             <p>
-              Är det dags att mysa? <br />
-              Kom närmare istället för att frysa
+              Grattis! <br />
+              Ni har nu visat att ni är värdiga den riktiga utmaningen.
             </p>
-            <p>
-              Men vi kräver en kod <br />
-              Så lyssna noga, följ mina råd
-            </p>
-            <p>
-              Ni måste samarbeta <br />
-              För att lösenordet kunna veta
-            </p>
-            <p>
-              Det låter som en gåta <br />a nån vid en sjö eller å, va?
-            </p>
+            <p>Invänta vidare information från er kontaktperson.</p>
 
             <input
               type="text"
