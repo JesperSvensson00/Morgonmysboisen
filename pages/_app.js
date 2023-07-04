@@ -23,7 +23,7 @@ export default function App({ Component, pageProps }) {
     <>
       <Head>
         <title>Morgonmysboisen</title>
-        <meta name="description" content="Morgonmysboisens officiella webbsida" />
+        <meta name="description" content="Morgonmysboisens skattjakt" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -35,7 +35,7 @@ export default function App({ Component, pageProps }) {
           }
         `}</style>
       </Head>
-      <>
+      {/* <>
         {showNav && (
           <nav>
             <Link href={"/start"} className={router.asPath == "/" ? "active" : ""} id="start">
@@ -73,7 +73,7 @@ export default function App({ Component, pageProps }) {
             </button>
           </nav>
         )}
-      </>
+      </> */}
       <Component {...pageProps} />
     </>
   );

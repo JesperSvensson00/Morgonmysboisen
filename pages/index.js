@@ -12,7 +12,7 @@ export default function Home() {
   const videoRef = useRef(null);
   const [videoPlaying, setVideoPlaying] = useState(false);
 
-  const password = "BOISENKANFLYGA";
+  const password = "REGNBÅGE";
 
   const flicker_delay = 3600;
   const zoom_delay = 2000;
@@ -111,6 +111,7 @@ export default function Home() {
               Ni har nu visat att ni är värdiga den riktiga utmaningen.
             </p>
             <p>Invänta vidare information från er kontaktperson.</p>
+            <p>För er egna säkerhet är det bäst att ni vloggar de kommande stegen.</p>
 
             <input
               type="text"
