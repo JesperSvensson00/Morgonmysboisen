@@ -11,6 +11,7 @@ import "@/styles/vlog-reveal.css";
 import "@/styles/medlemmar.css";
 import "@/styles/gallery.css";
 import "@/styles/movies.css";
+import "@/styles/nysida.css";
 
 const inter = Inter({ subsets: ["latin"] });
 export default function App({ Component, pageProps }) {

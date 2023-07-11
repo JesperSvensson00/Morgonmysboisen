@@ -1,0 +1,30 @@
+.nysida {
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva,
+    Verdana, sans-serif;
+  position: relative;
+  background-color: black;
+  height: 100vh;
+  overflow: hidden;
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
+
+  cursor: none;
+
+  margin: 0;
+}
+
+.nysida .message {
+  margin: 5rem auto;
+  padding: 0.5em;
+  border: 1px solid #ccc;
+  font-size: 0.9em;
+  line-height: 1.5em;
+  position: relative;
+  width: 60%;
+  text-align: center;
+}
+
+.nysida .message p {
+  color: antiquewhite;
+}
